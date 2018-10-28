@@ -1,0 +1,15 @@
+sudo: required
+
+services:
+  - docker
+
+script:
+  - docker build -t jbuncle/cloudflare-ddclient .
+
+deploy:
+  provider: script
+  script: 
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - docker push jbuncle/cloudflare-ddclient 
+  on:
+    branch: master
