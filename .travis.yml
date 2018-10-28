@@ -8,8 +8,6 @@ script:
 
 deploy:
   provider: script
-  script: 
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker push jbuncle/cloudflare-ddclient 
+  script: bash deploy.sh
   on:
     branch: master
