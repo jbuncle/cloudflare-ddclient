@@ -1,0 +1,9 @@
+version: '2.2'
+services:
+    ddclient:
+        build: .
+        environment:
+            CLOUDFLARE_EMAIL: $CLOUDFLARE_EMAIL
+            CLOUDFLARE_KEY: $CLOUDFLARE_KEY
+            CLOUDFLARE_DOMAIN: $CLOUDFLARE_DOMAIN
+            HOSTNAME: $HOSTNAME
