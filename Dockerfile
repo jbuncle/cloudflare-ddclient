@@ -1,4 +1,4 @@
-FROM ubuntu:18.10
+FROM debian:sid-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -13,12 +13,12 @@ RUN apt-get update && apt-get install -yq \
     && rm -rf /var/lib/apt/lists/*
 
 # Fetch and extract ddclient
-ENV VERSION=3.9.0
-RUN wget https://kent.dl.sourceforge.net/project/ddclient/ddclient/ddclient-$VERSION/ddclient-$VERSION.zip \
+ARG VERSION=3.9.1
+RUN wget https://phoenixnap.dl.sourceforge.net/project/ddclient/ddclient/ddclient-$VERSION/ddclient-$VERSION.zip \
     && unzip ddclient-$VERSION.zip \
     && mv ddclient-$VERSION/ddclient /usr/bin \
     && mkdir /etc/ddclient \
-    && mkdir /var/cache/ddclient\
+    && mkdir /var/cache/ddclient \
     && rm -rf ddclient-$VERSION ddclient-$VERSION.zip
 
 # Add config template
